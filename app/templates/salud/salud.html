@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juguetes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/categorias/juguetes/juguetes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/carousel/carousel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu-toggle/menu-toggle.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="hamburger-menu">
+                <input type="checkbox" id="menu-toggle">
+                <label for="menu-toggle" class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+            <ul class="menu">
+                <li><a href="{{ url_for('home') }}">Inicio</a></li>
+                <li><a href="{{ url_for('productos') }}">Productos</a></li>
+                <li><a href="{{ url_for('ropa') }}">Ropa & Accesorios</a></li>
+                <li><a href="{{ url_for('bebidas') }}">Bebidas</a></li>
+                <li><a href="{{ url_for('juguetes') }}">Juguetes</a></li>
+                <li><a href="{{ url_for('salud') }}">Salud & Belleza</a></li>
+                <li><a href="{{ url_for('auth.login') }}">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Salud y Belleza</h1>
+        <section class="carousel">
+            <div class="carousel-container">
+                <div class="product-item">
+                    <a href="{{ url_for('producto_detalle', producto_nombre='pc_gamer') }}">
+                        <img src="{{ url_for('static', filename='img/salud/salud1.jpg') }}" alt="salud1">
+                        <h2>Mascara de pestaña</h2>
+                        <p>Maybelline Ny lash Sensational sky High A prueba de Agua</p>
+                        <span class="precio">S/38.00</span>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="{{ url_for('producto_detalle', producto_nombre='laptop_gamer') }}">
+                        <img src="{{ url_for('static', filename='img/salud/salud2.jpg') }}" alt="salud2">
+                        <h2>Protector Solar</h2>
+                        <p>Antihelios UVMune 400 Oil Control toque seco FPS 50 + 50ml</p>
+                        <span class="precio">S/89.00</span>
+                    </a>
+                </div>
+
+                <div class="product-item">
+                    <a href="{{ url_for('producto_detalle', producto_nombre='teclado') }}">
+                        <img src="{{ url_for('static', filename='img/salud/salud3.jpg') }}" alt="salud3">
+                        <h2>Fleur Perfume de Mujer 50 ml</h2>
+                        <p>Perfume femenino de muy alta concentración y larga duración</p>
+                        <span class="precio">S/79.00</span>
+                    </a>
+
+                </div>
+                <div class="product-item">
+                    <a href="{{ url_for('producto_detalle', producto_nombre='mouse') }}">
+                        <img src="{{ url_for('static', filename='img/salud/salud4.jpg') }}" alt="salud4">
+                        <h2>TREE HUL</h2>
+                        <p>Exfoliante Corporal TREE HUT cotton candy, Frasco 510 ml</p>
+                        <span class="precio">S/32.00</span>
+                    </a>
+
+                </div>
+                <div class="product-item">
+                    <a href="{{ url_for('producto_detalle', producto_nombre='ram') }}">
+                        <img src="https://victoriassecretbeautype.vteximg.com.br/arquivos/ids/180668-380-506/667558856710_04.jpg?v=638482084827330000" alt="salud5">
+                        <h2>Pink Beauty</h2>
+                        <p>Crema corporal Femenino Victoria Secret</p>
+                        <span class="precio">S/29.00</span>
+                    </a>
+                </div>
+                
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Tu Marca. Todos los derechos reservados.</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/car-animations/car-animations.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/menu-toggle/menu-toggle.js') }}"></script>
+    
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/categorias/productos/productos.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/carousel/carousel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu-toggle/menu-toggle.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="hamburger-menu">
+                <input type="checkbox" id="menu-toggle">
+                <label for="menu-toggle" class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+            <ul class="menu">
+                <li><a href="{{ url_for('home') }}">Inicio</a></li>
+                <li><a href="{{ url_for('productos') }}">Productos</a></li>
+                <li><a href="{{ url_for('ropa') }}">Ropa & Accesorios</a></li>
+                <li><a href="{{ url_for('bebidas') }}">Bebidas</a></li>
+                <li><a href="{{ url_for('juguetes') }}">Juguetes</a></li>
+                <li><a href="{{ url_for('salud') }}">Salud & Belleza</a></li>
+                <li><a href="{{ url_for('auth.login') }}">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Productos de tecnología</h1>
+        <section class="carousel">
+            <div class="carousel-container">
+                <div class="product-item">
+                    <a href="{{ url_for('producto_detalle', producto_nombre='pc_gamer') }}">
+                        <img src="{{ url_for('static', filename='img/productos/computadora.jpg') }}" alt="PC Gamer">
+                        <h2>Pc gamer</h2>
+                        <p>Descripción del producto de tecnología.</p>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="{{ url_for('producto_detalle', producto_nombre='laptop_gamer') }}">
+                        <img src="{{ url_for('static', filename='img/productos/laptop.png') }}" alt="Laptop Gamer">
+                        <h2>Laptop Gamer</h2>
+                        <p>Descripción del producto de tecnología.</p>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="{{ url_for('producto_detalle', producto_nombre='teclado') }}">
+                        <img src="{{ url_for('static', filename='img/productos/tecladooo.png') }}" alt="Teclado">
+                        <h2>Teclado</h2>
+                        <p>Descripción del producto de tecnología.</p>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="{{ url_for('producto_detalle', producto_nombre='mouse') }}">
+                        <img src="{{ url_for('static', filename='img/productos/mause.png') }}" alt="Mouse">
+                        <h2>Mouse</h2>
+                        <p>Descripción del producto de tecnología.</p>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="{{ url_for('producto_detalle', producto_nombre='ram') }}">
+                        <img src="{{ url_for('static', filename='img/productos/ram.png') }}" alt="RAM">
+                        <h2>RAM</h2>
+                        <p>Descripción del producto de tecnología.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/car-animations/car-animations.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/menu-toggle/menu-toggle.js') }}"></script>
+
+    <footer>
+        <p>&copy; 2024 Tu Marca. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

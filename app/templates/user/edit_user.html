@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuario</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user/edit_user.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Usuario</h1>
+        <form action="{{ url_for('user.edit_user', id=user['id']) }}" method="post">
+            <label for="username">Nombre:</label>
+            <input type="text" id="username" name="username" value="{{ user['username'] }}" required>
+
+            <label for="last_name">Apellido:</label>
+            <input type="text" id="last_name" name="last_name" value="{{ user['last_name'] }}" required>
+
+            <label for="doc">Documento:</label>
+            <input type="text" id="doc" name="doc" value="{{ user['doc'] }}" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ user['email'] }}" required>
+
+            <label for="phone">Teléfono:</label>
+            <input type="text" id="phone" name="phone" value="{{ user['phone'] }}" required>
+
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </div>
+</body>
+</html>

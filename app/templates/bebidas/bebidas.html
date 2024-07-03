@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bebidas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/categorias/bebidas/bebidas.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/carousel/carousel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu-toggle/menu-toggle.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="hamburger-menu">
+                <input type="checkbox" id="menu-toggle">
+                <label for="menu-toggle" class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+            <ul class="menu">
+                <li><a href="{{ url_for('home') }}">Inicio</a></li>
+                <li><a href="{{ url_for('productos') }}">Productos</a></li>
+                <li><a href="{{ url_for('ropa') }}">Ropa & Accesorios</a></li>
+                <li><a href="{{ url_for('bebidas') }}">Bebidas</a></li>
+                <li><a href="{{ url_for('juguetes') }}">Juguetes</a></li>
+                <li><a href="{{ url_for('salud') }}">Salud & Belleza</a></li>
+                <li><a href="{{ url_for('auth.login') }}">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Bebidas</h1>
+        <section class="carousel">
+            <div class="carousel-container">
+                <div class="product-item">
+          
+                        <img src="{{ url_for('static', filename='img/bebidas/coca.jpg') }}" alt="Coca">
+                        <h2>Coca Cola</h2>
+                        <p>Gaseosa Sabor Regular Botella 1.5 L.</p>
+                        <p>S/06.00</p>
+                    </a>
+                </div>
+                <div class="product-item">
+                    
+                        <img src="{{ url_for('static', filename='img/bebidas/energy.jpg') }}" alt="Energy">
+                        <h2>Energy</h2>
+                        <p>Bebida con alcohol de sandía de 473 mL.</p>
+                        <p>S/03.00</p>
+                    </a>
+                </div>
+                <div class="product-item">
+            
+                    <img src="{{ url_for('static', filename='img/bebidas/power.jpg') }}" alt="Power">
+                        <h2>Power</h2>
+                        <p>Rehidratante Powerade Multifrutas Botella 1.5 L.</p>
+                        <p>S/03.00</p>
+                    </a>
+                </div>
+                
+                <div class="product-item">
+              
+                        <img src="{{ url_for('static', filename='img/bebidas/volt.jpg') }}" alt="Volt">
+                        <h2>Volt</h2>
+                        <p>Bebida Energizante Volt 300 mL.</p>
+                        <p>S/03.00</p>
+                    </a>
+                </div>
+                <div class="product-item">
+             
+                        <img src="{{ url_for('static', filename='img/bebidas/fanta.jpg') }}" alt="Fanta">
+                        <h2>Fanta</h2>
+                        <p>Gaseosa Fanta Sabor Naranja 355 mL.</p>
+                        <p>S/03.00</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Tu Marca. Todos los derechos reservados.</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/car-animations/car-animations.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/menu-toggle/menu-toggle.js') }}"></script>
+</body>
+</html>

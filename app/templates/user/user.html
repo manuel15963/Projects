@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user/user.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestión de Usuarios</h1>
+        <div class="filter">
+            <button onclick="window.location.href='{{ url_for('user.index', status='active') }}'" class="{{ 'active' if filter_status == 'active' else '' }}">Activos</button>
+            <button onclick="window.location.href='{{ url_for('user.index', status='inactive') }}'" class="{{ 'active' if filter_status == 'inactive' else '' }}">Inactivos</button>
+        </div>
+        <a href="{{ url_for('user.add_user') }}" class="add-user-btn">Añadir Usuario</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Documento</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.doc }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.phone }}</td>
+                    <td>
+                        {% if filter_status == 'active' %}
+                            <a href="{{ url_for('user.edit_user', id=user.id) }}">Editar</a>
+                            <a href="{{ url_for('user.delete_user', id=user.id) }}">Eliminar</a>
+                        {% else %}
+                            <a href="{{ url_for('user.restore_user', id=user.id) }}">Restaurar</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

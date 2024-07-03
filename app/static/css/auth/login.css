@@ -1,0 +1,42 @@
+body {
+    background-color: #ffe5e5;
+}
+
+.card {
+    border: none;
+    border-radius: 1rem;
+}
+
+.card-title {
+    font-size: 2rem;
+    color: #6d1b1b;
+}
+
+.btn-primary {
+    background-color: #6d1b1b;
+    border: none;
+}
+
+.btn-outline-primary, .btn-outline-danger {
+    width: 48%;
+    margin: 0 1%;
+    border-color: #6d1b1b;
+    color: #6d1b1b;
+}
+
+.form-control {
+    border-radius: 0.5rem;
+    border-color: #6d1b1b;
+}
+
+.form-group label {
+    color: #6d1b1b;
+}
+
+.text-primary {
+    color: #6d1b1b !important;
+}
+
+.text-muted {
+    font-size: 0.9rem;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Producto - PC Gamer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/categorias/productos/detalle_producto.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Inicio</a></li>
+                <li><a href="{{ url_for('productos') }}">Productos</a></li>
+                <li><a href="{{ url_for('ropa') }}">Ropa & Accesorios</a></li>
+                <li><a href="{{ url_for('bebidas') }}">Bebidas</a></li>
+                <li><a href="{{ url_for('juguetes') }}">Juguetes</a></li>
+                <li><a href="{{ url_for('salud') }}">Salud & Belleza</a></li>
+                <li><a href="{{ url_for('auth.login') }}">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+        <div class="product-detail">
+            <div class="product-image">
+                <img src="{{ url_for('static', filename='img/productos/computadora.jpg') }}" alt="PC Gamer">
+            </div>
+            <div class="product-info">
+                <h2>PC Gamer</h2>
+                <p class="description">Computadora PC GAMER Core i7-11TH RAM16GB Disco 1TB+SSD 480GB RTX 3060 12GB.</p>
+                <p class="price">S/ 4,169.00</p>
+                <p class="price-usd">$ 1,111.29</p>
+                <p class="stock-status">En stock: +9 artículos</p>
+                <p class="condition">Condición: Nuevo</p>
+                <button>Añadir al carro</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Tu Marca. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

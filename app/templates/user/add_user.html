@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Usuario</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user/add_user.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">Registrar Usuario</h3>
+                        <form id="registerForm" action="{{ url_for('auth.register') }}" method="post">
+                            {{ form.hidden_tag() }}
+                            <div class="form-group">
+                                {{ form.doc.label }} {{ form.doc(class_='form-control') }}
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-primary" id="searchDniButton">Buscar</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {{ form.username.label }} {{ form.username(class_='form-control') }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.last_name.label }} {{ form.last_name(class_='form-control') }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.email.label }} {{ form.email(class_='form-control') }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.phone.label }} {{ form.phone(class_='form-control') }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.password.label }} {{ form.password(class_='form-control') }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.confirm_password.label }} {{ form.confirm_password(class_='form-control') }}
+                            </div>
+                            <div class="form-group text-center">
+                                {{ form.submit(class_='btn btn-primary btn-block') }}
+                            </div>
+                        </form>
+                        <div class="text-center mt-3">
+                            <a href="{{ url_for('auth.login') }}">¿Ya tienes una cuenta? Inicia sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/user/validations.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/user/add_user.js') }}"></script>
+</body>
+</html>

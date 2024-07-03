@@ -1,0 +1,40 @@
+/* carousel.css */
+
+.carousel {
+    overflow: hidden;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.carousel-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.product-item {
+    flex: 0 0 20%;
+    box-sizing: border-box;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+    margin: 10px;
+}
+
+.product-item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.product-item h2, .product-item p {
+    color: #333;
+    margin: 5px 0;
+}
+
+.product-item a {
+    text-decoration: none;
+    color: inherit;
+}

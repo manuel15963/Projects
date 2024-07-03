@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juguetes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/categorias/juguetes/juguetes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/carousel/carousel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu-toggle/menu-toggle.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="hamburger-menu">
+                <input type="checkbox" id="menu-toggle">
+                <label for="menu-toggle" class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+            <ul class="menu">
+                <li><a href="{{ url_for('home') }}">Inicio</a></li>
+                <li><a href="{{ url_for('productos') }}">Productos</a></li>
+                <li><a href="{{ url_for('ropa') }}">Ropa & Accesorios</a></li>
+                <li><a href="{{ url_for('bebidas') }}">Bebidas</a></li>
+                <li><a href="{{ url_for('juguetes') }}">Juguetes</a></li>
+                <li><a href="{{ url_for('salud') }}">Salud & Belleza</a></li>
+                <li><a href="{{ url_for('auth.login') }}">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Juguetes</h1>
+        <section class="carousel">
+            <div class="carousel-container">
+                <div class="product-item">
+                    <a href="{{ url_for('producto_detalle', producto_nombre='casaca') }}">
+                        <img src="{{ url_for('static', filename='img/ropa/casaca.png') }}" alt="casaca">
+                        <h2>Casaca estilo parka</h2>
+                        <p>Una casaca cómoda y resistente, ideal para mantener el calor durante el invierno. Disponible en varios colores y tamaños.</p>
+                        <p class="precio">Precio: $57.00</p>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="{{ url_for('producto_detalle', producto_nombre='chompa') }}">
+                        <img src="{{ url_for('static', filename='img/ropa/chompa.jpg') }}" alt="chompa">
+                        <h2>Chompa de lana</h2>
+                        <p>Chompa de lana suave y cálida, perfecta para el clima frío. Diseñada con estilo moderno y elegancia.</p>
+                        <p class="precio">Precio: $42.00</p>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="{{ url_for('producto_detalle', producto_nombre='pantalon') }}">
+                        <img src="{{ url_for('static', filename='img/ropa/pantalon.jpg') }}" alt="pantalon">
+                        <h2>Pantalón acampanado</h2>
+                        <p>Pantalón casual y cómodo, adecuado para cualquier ocasión. Hecho con materiales de alta calidad para durabilidad y confort.</p>
+                        <p class="precio">Precio: $31.00</p>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="{{ url_for('producto_detalle', producto_nombre='vestido') }}">
+                        <img src="{{ url_for('static', filename='img/ropa/vestido.jpg') }}" alt="vestido">
+                        <h2>Vestido bohemio</h2>
+                        <p>Vestido elegante y versátil, ideal para eventos formales y casuales. Disponible en varios diseños y colores.</p>
+                        <p class="precio">Precio: $45.00</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Tu Marca. Todos los derechos reservados.</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/car-animations/car-animations.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/menu-toggle/menu-toggle.js') }}"></script>
+
+</body>

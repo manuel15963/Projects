@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/inicio/inicio.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu-toggle/menu-toggle.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="hamburger-menu">
+                <input type="checkbox" id="menu-toggle">
+                <label for="menu-toggle" class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+            <ul class="menu">
+                <li><a href="{{ url_for('home') }}">Inicio</a></li>
+                <li><a href="{{ url_for('productos') }}">Productos</a></li>
+                <li><a href="{{ url_for('ropa') }}">Ropa & Accesorios</a></li>
+                <li><a href="{{ url_for('bebidas') }}">Bebidas</a></li>
+                <li><a href="{{ url_for('juguetes') }}">Juguetes</a></li>
+                <li><a href="{{ url_for('salud') }}">Salud & Belleza</a></li>
+                <li><a href="{{ url_for('auth.login') }}">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Zapatillas hasta 70% de descuento</h1>
+                <p>¡Válido solo en modelos seleccionados hasta agotar stock!</p>
+            </div>
+            <div class="hero-image">
+                <img src="{{ url_for('static', filename='img/inicio/zapato_plantilla.png') }}" alt="Zapatillas en descuento">
+            </div>
+        </section>
+        <section class="products">
+            <h2>Productos Destacados</h2>
+            <div class="product-grid">
+                <div class="product">
+                    <a href="{{ url_for('productos') }}">
+                        <img src="{{ url_for('static', filename='img/inicio/pcgamer.png') }}" alt="Tecnología">
+                    </a>
+                    <p>Tecnología</p>
+                </div>
+                <div class="product">
+                    <a href="{{ url_for('ropa') }}">
+                        <img src="{{ url_for('static', filename='img/inicio/ropa.png') }}" alt="Ropa y Accesorios">
+                    </a>
+                    <p>Ropa & Accesorios</p>
+                </div>
+                <div class="product">
+                    <a href="{{ url_for('bebidas') }}">
+                        <img src="{{ url_for('static', filename='img/inicio/bebidas.png') }}" alt="Bebidas">
+                    </a>
+                    <p>Bebidas</p>
+                </div>
+                <div class="product">
+                    <a href="{{ url_for('juguetes') }}">
+                        <img src="{{ url_for('static', filename='img/inicio/juguetes.png') }}" alt="Juguetes">
+                    </a>
+                    <p>Juguetes</p>
+                </div>
+                <div class="product">
+                    <a href="{{ url_for('salud') }}">
+                        <img src="{{ url_for('static', filename='img/inicio/salud.png') }}" alt="Salud y Belleza">
+                    </a>
+                    <p>Salud & Belleza</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Tu Marca. Todos los derechos reservados.</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/menu-toggle/menu-toggle.js') }}"></script>
+</body>
+</html>
