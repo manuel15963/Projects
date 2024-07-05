@@ -31,11 +31,11 @@ def add_user_to_db(username, last_name, doc, email, phone, password):
             existing_user = cursor.fetchone()
             if existing_user:
                 if existing_user[3] == doc:
-                    return False, "El DNI ya está registrado."
+                    return False, "El DNI ya está registrado no te creas habil."
                 elif existing_user[4] == email:
-                    return False, "El correo electrónico ya está registrado."
+                    return False, "El correo electrónico ya está registrado no te creas habil ."
                 elif existing_user[5] == phone:
-                    return False, "El teléfono ya está registrado."
+                    return False, "El teléfono ya está registrado no te creas habil."
 
             hashed_password = generate_password_hash(password)
             query = """

@@ -28,10 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
             if (data.status === 'success') {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Registro Exitoso',
+                    title: 'Registro Exitoso pudiste rellenar esto sin confundirte  toma un premio 🏆 :D ',
                     text: data.message,
                 }).then(() => {
-                    window.location.href = form.action; // Redirigir al inicio de sesión
+                    window.location.href = data.redirect_url; // Redirigir al inicio de sesión
                 });
             } else {
                 Swal.fire({
