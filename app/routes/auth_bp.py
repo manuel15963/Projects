@@ -23,7 +23,7 @@ def login():
             flash('Inicio de sesión exitoso')
             return redirect(url_for('user.index'))
         else:
-            error = "cambia la contraseña  no te dejara ingresar hasta que lo hagas"
+            error = "nombre de usuario o contraseña incorrecta"
             print("Nombre de usuario o contraseña incorrectos")
             flash('Nombre de usuario o contraseña incorrectos')
     return render_template('auth/login.html', form=form, error=error)

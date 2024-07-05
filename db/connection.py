@@ -7,7 +7,7 @@ def connect_db():
     try:
         connection = psycopg2.connect(
             user="postgres",
-            password="123software",
+            password="",
             host="localhost",  # o el host donde se encuentra la BD
             port="5432",       # el puerto por defecto de PostgreSQL
             database="tienda_don_italo"
@@ -50,28 +50,28 @@ def execute_non_query(query, params=None):
 # Comentado o eliminado después de la ejecución inicial
 
 
-def update_passwords():
-    connection = connect_db()
-    if connection:
-        cursor = connection.cursor()
-        try:
-            cursor.execute("SELECT id, password FROM users")
-            users = cursor.fetchall()
+# def update_passwords():
+#     connection = connect_db()
+#     if connection:
+#         cursor = connection.cursor()
+#         try:
+#             cursor.execute("SELECT id, password FROM users")
+#             users = cursor.fetchall()
 
-            for user in users:
-                user_id, password = user
-                if not password.startswith('pbkdf2:sha256:'):
-                    hashed_password = generate_password_hash(password)
-                    cursor.execute("UPDATE users SET password = %s WHERE id = %s", (hashed_password, user_id))
+#             for user in users:
+#                 user_id, password = user
+#                 if not password.startswith('pbkdf2:sha256:'):
+#                     hashed_password = generate_password_hash(password)
+#                     cursor.execute("UPDATE users SET password = %s WHERE id = %s", (hashed_password, user_id))
 
-            connection.commit()
-            cursor.close()
-            connection.close()
-            print("Contraseñas actualizadas correctamente.")
-        except Exception as e:
-            print(f"Error al actualizar las contraseñas: {e}")
-            cursor.close()
-            connection.close()
+#             connection.commit()
+#             cursor.close()
+#             connection.close()
+#             print("Contraseñas actualizadas correctamente.")
+#         except Exception as e:
+#             print(f"Error al actualizar las contraseñas: {e}")
+#             cursor.close()
+#             connection.close()
 
-if __name__ == "__main__":
-    update_passwords()
+# if __name__ == "__main__":
+#     update_passwords()
