@@ -5,7 +5,7 @@ spring:
   r2dbc:
     url: r2dbc:postgresql://localhost:5432/gestion_bibliotecas
     username: postgres
-    password: 123software
+    password: "tu contraseña"
     pool:
       enabled: true
       initial-size: 5
