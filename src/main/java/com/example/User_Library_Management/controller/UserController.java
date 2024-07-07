@@ -5,8 +5,8 @@ import com.example.User_Library_Management.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/api/users")
@@ -16,44 +16,47 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<User> registerUser(@RequestBody User user) {
-        return ResponseEntity.ok(userService.saveUser(user));
+    public Mono<ResponseEntity<User>> registerUser(@RequestBody User user){
+        return userService.saveUser(user)
+                .map(ResponseEntity::ok);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+    public Mono<ResponseEntity<User>> getUserById(@PathVariable Long id) {
         return userService.findById(id)
                 .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+                .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/username/{username}")
-    public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
+    public Mono<ResponseEntity<User>> getUserByUsername(@PathVariable String username) {
         return userService.findByUsername(username)
                 .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+                .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/email/{email}")
-    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+    public Mono<ResponseEntity<User>> getUserByEmail(@PathVariable String email) {
         return userService.findByEmail(email)
                 .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+                .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
-        return ResponseEntity.ok(userService.findAll());
+    public Flux<User> getAllUsers() {
+        return userService.findAll();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
-        return ResponseEntity.ok(userService.updateUser(id, userDetails));
+    public Mono<ResponseEntity<User>> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
+        return userService.updateUser(id, userDetails)
+                .map(ResponseEntity::ok)
+                .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
-        return ResponseEntity.noContent().build();
+    public Mono<ResponseEntity<Void>> deleteUser(@PathVariable Long id) {
+        return userService.deleteUser(id)
+                .then(Mono.just(ResponseEntity.noContent().build()));
     }
 }
