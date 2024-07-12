@@ -1,0 +1,26 @@
+server:
+  port: 8081
+
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/gestion_bibliotecas
+    username: postgres
+    password: 123software
+    pool:
+      enabled: true
+      initial-size: 5
+      max-size: 20
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: activities-service-group
+      auto-offset-reset: earliest
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+logging:
+  level:
+    org:
+      springframework:
+        r2dbc: DEBUG
