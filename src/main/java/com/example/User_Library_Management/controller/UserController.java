@@ -16,9 +16,10 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public Mono<ResponseEntity<User>> registerUser(@RequestBody User user){
+    public Mono<ResponseEntity<User>> registerUser(@RequestBody User user) {
         return userService.saveUser(user)
-                .map(ResponseEntity::ok);
+                .map(ResponseEntity::ok)
+                .defaultIfEmpty(ResponseEntity.badRequest().build());
     }
 
     @GetMapping("/{id}")
@@ -57,6 +58,7 @@ public class UserController {
     @DeleteMapping("/delete/{id}")
     public Mono<ResponseEntity<Void>> deleteUser(@PathVariable Long id) {
         return userService.deleteUser(id)
-                .then(Mono.just(ResponseEntity.noContent().build()));
+                .then(Mono.fromCallable(() -> ResponseEntity.noContent().<Void>build()))
+                .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 }

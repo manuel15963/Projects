@@ -1,7 +1,8 @@
 package com.example.User_Library_Management.model;
 
 import lombok.Data;
-import  org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDate;
@@ -20,9 +21,12 @@ public class User {
     private String lastname;
     private LocalDate birthdate;
     private String phone;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
     private String role;
     private String status;
 
+    @Column("created")
+    private LocalDateTime created;
+
+    @Column("updated")
+    private LocalDateTime updated;
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-
+import java.time.LocalDateTime;
 
 @Service
 public class UserService {
@@ -21,8 +21,9 @@ public class UserService {
 
     public Mono<User> saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setCreated(LocalDateTime.now());
+        user.setUpdated(LocalDateTime.now());
         return userRepository.save(user);
-
     }
 
     public Mono<User> findById(Long id) {
@@ -41,7 +42,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public  Mono<User> updateUser(Long id , User userDetails) {
+    public Mono<User> updateUser(Long id, User userDetails) {
         return userRepository.findById(id)
                 .flatMap(user -> {
                     user.setUsername(userDetails.getUsername());
@@ -52,15 +53,16 @@ public class UserService {
                     user.setPhone(userDetails.getPhone());
                     user.setRole(userDetails.getRole());
                     user.setStatus(userDetails.getStatus());
+                    user.setUpdated(LocalDateTime.now());
                     return userRepository.save(user);
                 });
     }
 
     public Mono<Void> deleteUser(Long id) {
-    return userRepository.findById(id)
-            .flatMap(user -> {
-                user.setStatus("I");
-                return userRepository.save(user).then();
-            });
+        return userRepository.findById(id)
+                .flatMap(user -> {
+                    user.setStatus("I");
+                    return userRepository.save(user).then();
+                });
     }
 }
