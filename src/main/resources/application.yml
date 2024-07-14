@@ -10,11 +10,14 @@ spring:
       enabled: true
       initial-size: 5
       max-size: 20
+
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
-      group-id: activities-service-group
+      group-id: book-catalog-service-group
       auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer

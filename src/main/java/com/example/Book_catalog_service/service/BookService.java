@@ -13,10 +13,14 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
+    @Autowired
+    private KafkaProducerService kafkaProducerService;
+
     public Mono<Book> saveBook(Book book) {
         book.setCreatedIfNew();
         book.setUpdated();
-        return bookRepository.save(book);
+        return bookRepository.save(book)
+                .doOnSuccess(savedBook -> kafkaProducerService.sendMessage("book-topic", "Libro creado: " + savedBook.getTitle()));
     }
 
     public Mono<Book> findById(Long id) {
@@ -39,11 +43,14 @@ public class BookService {
                     book.setLanguage(bookDetails.getLanguage());
                     book.setDescription(bookDetails.getDescription());
                     book.setUpdated();
-                    return bookRepository.save(book);
+                    return bookRepository.save(book)
+                            .doOnSuccess(updatedBook -> kafkaProducerService.sendMessage("book-topic", "Libro actualizado: " + updatedBook.getTitle()));
                 });
     }
 
     public Mono<Void> deleteBook(Long id) {
-        return bookRepository.deleteById(id);
+        return bookRepository.findById(id)
+                .flatMap(book -> bookRepository.delete(book)
+                        .then(Mono.fromRunnable(() -> kafkaProducerService.sendMessage("book-topic", "Libro eliminado: " + book.getTitle()))));
     }
 }
