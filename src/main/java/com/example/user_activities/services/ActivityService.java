@@ -13,8 +13,12 @@ public class ActivityService {
     @Autowired
     private ActivityRepository activityRepository;
 
+    @Autowired
+    private KafkaProducerService kafkaProducerService;
+
     public Mono<Activity> saveActivity(Activity activity) {
-        return activityRepository.save(activity);
+        return activityRepository.save(activity)
+                .doOnSuccess(savedActivity -> kafkaProducerService.sendMessage("activity-topic", "Actividad creada: " + savedActivity.getId()));
     }
 
     public Mono<Activity> findById(Long id) {
@@ -33,11 +37,16 @@ public class ActivityService {
                     existingActivity.setBookId(activity.getBookId());
                     existingActivity.setDueDate(activity.getDueDate());
                     existingActivity.setFine(activity.getFine());
-                    return activityRepository.save(existingActivity);
+                    return activityRepository.save(existingActivity)
+                            .doOnSuccess(updatedActivity -> kafkaProducerService.sendMessage("activity-topic", "Actividad actualizada: " + updatedActivity.getId()));
                 });
     }
 
     public Mono<Void> deleteActivity(Long id) {
-        return activityRepository.deleteById(id);
+        return activityRepository.findById(id)
+                .flatMap(existingActivity ->
+                        activityRepository.delete(existingActivity)
+                                .then(Mono.fromRunnable(() -> kafkaProducerService.sendMessage("activity-topic", "Actividad eliminada: " + existingActivity.getId())))
+                );
     }
 }
