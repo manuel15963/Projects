@@ -19,15 +19,11 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private KafkaProducerService kafkaProducerService;
-
     public Mono<User> saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setCreated(LocalDateTime.now());
         user.setUpdated(LocalDateTime.now());
-        return userRepository.save(user)
-                .doOnSuccess(savedUser -> kafkaProducerService.sendMessage("user-topic", "Usuario creado: " + savedUser.getUsername()));
+        return userRepository.save(user);
     }
 
     public Mono<User> findById(Long id) {
@@ -58,8 +54,7 @@ public class UserService {
                     user.setRole(userDetails.getRole());
                     user.setStatus(userDetails.getStatus());
                     user.setUpdated(LocalDateTime.now());
-                    return userRepository.save(user)
-                            .doOnSuccess(updatedUser -> kafkaProducerService.sendMessage("user-topic", "Usuario actualizado: " + updatedUser.getUsername()));
+                    return userRepository.save(user);
                 });
     }
 
@@ -67,8 +62,7 @@ public class UserService {
         return userRepository.findById(id)
                 .flatMap(user -> {
                     user.setStatus("I");
-                    return userRepository.save(user)
-                            .then(Mono.fromRunnable(() -> kafkaProducerService.sendMessage("user-topic", "Usuario eliminado: " + user.getUsername())));
+                    return userRepository.save(user).then();
                 });
     }
 }

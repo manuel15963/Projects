@@ -29,20 +29,6 @@ public class UserController {
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/username/{username}")
-    public Mono<ResponseEntity<User>> getUserByUsername(@PathVariable String username) {
-        return userService.findByUsername(username)
-                .map(ResponseEntity::ok)
-                .defaultIfEmpty(ResponseEntity.notFound().build());
-    }
-
-    @GetMapping("/email/{email}")
-    public Mono<ResponseEntity<User>> getUserByEmail(@PathVariable String email) {
-        return userService.findByEmail(email)
-                .map(ResponseEntity::ok)
-                .defaultIfEmpty(ResponseEntity.notFound().build());
-    }
-
     @GetMapping
     public Flux<User> getAllUsers() {
         return userService.findAll();
@@ -55,10 +41,9 @@ public class UserController {
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public Mono<ResponseEntity<Void>> deleteUser(@PathVariable Long id) {
         return userService.deleteUser(id)
-                .then(Mono.fromCallable(() -> ResponseEntity.noContent().<Void>build()))
-                .defaultIfEmpty(ResponseEntity.notFound().build());
+                .then(Mono.fromCallable(() -> ResponseEntity.noContent().build()));
     }
 }

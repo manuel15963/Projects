@@ -9,6 +9,9 @@ import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.server.SecurityWebFilterChain;
+import org.springframework.web.cors.reactive.CorsConfigurationSource;
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
+import org.springframework.web.cors.CorsConfiguration;
 
 @Configuration
 @EnableWebFluxSecurity
@@ -16,7 +19,7 @@ public class WebSecurityConfig {
 
     @Bean
     @Primary
-    public CustomUserDetailsService userDetailsService() {
+    public CustomUserDetailsService customUserDetailsService() {
         return new CustomUserDetailsService();
     }
 
@@ -32,12 +35,23 @@ public class WebSecurityConfig {
                 .authorizeExchange(exchanges -> exchanges
                         .pathMatchers("/api/users/register").permitAll()
                         .pathMatchers("/api/users/**").permitAll()
-
                         .anyExchange().authenticated()
                 )
                 .httpBasic(ServerHttpSecurity.HttpBasicSpec::disable)
-                .formLogin(ServerHttpSecurity.FormLoginSpec::disable);
+                .formLogin(ServerHttpSecurity.FormLoginSpec::disable)
+                .cors().configurationSource(corsConfigurationSource());
 
         return http.build();
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.addAllowedOrigin("*");
+        configuration.addAllowedMethod("*");
+        configuration.addAllowedHeader("*");
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
 }
