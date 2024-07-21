@@ -4,3 +4,4 @@ Contendrá todo el código de la nueva plantilla, implementación y todo lo nece
 -npm uninstall node-sass
 -npm cache clean --force
 -npm install node-sass
+-npm audit fix --force
