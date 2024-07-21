@@ -1,0 +1,86 @@
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  text-align: center;
+  font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+.titulo {
+  font-size: 30px;
+}
+
+.boton {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button-container {
+  display: flex;
+  gap: 8px;
+}
+
+.table-cell {
+  padding: 10px;
+}
+
+.centered-table {
+  width: 100%;
+  margin: 0 auto; /* Para centrar la tabla horizontalmente */
+}
+
+.bg-gray-100 {
+  background-color: #f7fafc;
+}
+
+.bg-gray-200 {
+  background-color: #edf2f7;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-gray-500 {
+  color: #6b7280;
+}
+
+/* Estilo para el contenedor personalizado */
+.custom-select {
+  position: relative;
+  display: inline-block;
+  width: 200px; /* Ancho personalizado del combo box */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#filtroEstadoContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Estilo para el select */
+#filtroEstado {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Estilo para las opciones del select */
+#filtroEstado option {
+  font-size: 16px;
+  background-color: #fff;
+}
+
+.centered-table {
+  width: 100%;
+  margin: 0 auto; /* Para centrar la tabla horizontalmente */
+}
+
+.table-cell {
+  padding: 10px; /* Ajusta el valor según la cantidad de espacio deseada */
+}

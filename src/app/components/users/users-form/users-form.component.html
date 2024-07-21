@@ -1,0 +1,80 @@
+<div class="cabecera-modalRegistro">
+  <h1>{{isEditMode ? 'EDITAR USUARIO' : 'NUEVO REGISTRO'}}</h1>
+</div>
+<br>
+<div class="formulario">
+  <form [formGroup]="userForm">
+    <div class="columna">
+      <div class="fila">
+        <label for="campo1">NOMBRE:</label>
+        <input formControlName="username" type="text" placeholder="Ingrese nombre de usuario" id="campo1">
+      </div>
+      <div class="fila validator" *ngIf="userForm.get('username')?.invalid && (userForm.get('username')?.dirty || userForm.get('username')?.touched)">
+      </div>
+
+      <div class="fila">
+        <label for="campo2">Email:</label>
+        <input formControlName="email" placeholder="Ingrese email" type="text" id="campo2">
+      </div>
+      <div class="fila validator" *ngIf="userForm.get('email')?.invalid && (userForm.get('email')?.dirty || userForm.get('email')?.touched)">
+      </div>
+
+      <div class="fila">
+        <label for="campo4">Firstname:</label>
+        <input formControlName="firstname" placeholder="Ingrese nombre" type="text" id="campo4">
+      </div>
+      <div class="fila validator" *ngIf="userForm.get('firstname')?.invalid && (userForm.get('firstname')?.dirty || userForm.get('firstname')?.touched)">
+      </div>
+
+      <div class="fila">
+        <label for="campo4">Lastname:</label>
+        <input formControlName="lastname" placeholder="Ingrese apellido" type="text" id="campo5">
+      </div>
+      <div class="fila validator" *ngIf="userForm.get('lastname')?.invalid && (userForm.get('lastname')?.dirty || userForm.get('lastname')?.touched)">
+      </div>
+
+      <div class="fila" *ngIf="!isEditMode">
+        <label for="campo6">Birthdate:</label>
+        <input formControlName="birthdate" placeholder="Ingrese fecha de nacimiento" type="date" id="campo6">
+      </div>
+      <div class="fila validator" *ngIf="userForm.get('birthdate')?.invalid && (userForm.get('birthdate')?.dirty || userForm.get('birthdate')?.touched)">
+      </div>
+
+      <div class="fila">
+        <label for="campo4">Phone:</label>
+        <input formControlName="phone" placeholder="Ingrese teléfono" type="text" id="campo7">
+      </div>
+      <div class="fila validator" *ngIf="userForm.get('phone')?.invalid && (userForm.get('phone')?.dirty || userForm.get('phone')?.touched)">
+      </div>
+
+      <div class="fila">
+        <label for="campo4">Role:</label>
+        <select formControlName="role" id="campo8">
+          <option value="USER">USER</option>
+          <option value="ADMIN">ADMIN</option>
+        </select>
+      </div>
+      <div class="fila validator" *ngIf="userForm.get('role')?.invalid && (userForm.get('role')?.dirty || userForm.get('role')?.touched)">
+      </div>
+
+      <div class="fila" *ngIf="!isEditMode">
+        <label for="password">Password:</label>
+        <input formControlName="password" placeholder="Ingrese contraseña" type="password" id="password">
+      </div>
+      <div class="fila validator" *ngIf="userForm.get('password')?.invalid && (userForm.get('password')?.dirty || userForm.get('password')?.touched)">
+      </div>
+    </div>
+
+    <div class="columna"></div>
+
+    <div class="boton-espacio">
+      <button type="submit" (click)="saveEntidades()" mat-raised-button style="background-color: #9ADE7B; color: #ffffff;">
+        {{isEditMode ? 'ACTUALIZAR' : 'GUARDAR'}}
+      </button>
+      <button (click)="onClose()" mat-raised-button style="background-color: #FF8080; color: #ffffff; margin-left: 12px;">
+        CERRAR
+      </button>
+    </div>
+    <br>
+  </form>
+</div>

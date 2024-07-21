@@ -1,0 +1,78 @@
+<div class="cabecera">
+  <h1 class="titulo">Lista de Usuarios</h1>
+</div>
+
+<div id="filtroEstadoContainer" style="display: flex; justify-content: space-between; align-items: center;">
+  <div class="buton">
+    <button (click)="openDialog()" mat-raised-button style="background-color: #9ADE7B; color: #ffffff; border-radius: 15px; margin: 2px;" id="inicio">
+      <mat-icon aria-hidden="false" aria-label="add_circle_outline" fontIcon="add_circle_outline"></mat-icon>
+      Nueva Entidad
+    </button>
+  </div>
+  <div style="display: flex; align-items: center;">
+    <label for="filtroEstado">Filtrar por estado:</label>
+    <select id="filtroEstado" [(ngModel)]="estadoFiltrado" (change)="listar()">
+      <option value="Todos">Todos</option>
+      <option value="A">Activo</option>
+      <option value="I">Inactivo</option>
+    </select>
+  </div>
+</div>
+
+<br>
+<br>
+
+<mat-card class="w-100">
+  <mat-card-content>
+    <h3>Listado de entidades</h3>
+    <br>
+    <table class="table centered-table">
+      <thead>
+      <tr>
+        <th scope="col" class="table-cell">Username</th>
+        <th scope="col" class="table-cell">Email</th>
+        <th scope="col" class="table-cell">Firstname</th>
+        <th scope="col" class="table-cell">Lastname</th>
+        <th scope="col" class="table-cell">Birthdate</th>
+        <th scope="col" class="table-cell">Phone</th>
+        <th scope="col" class="table-cell">Role</th>
+        <th scope="col" class="table-cell">ACCIÓN</th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngIf="dataSource.length; else noData">
+        <tr *ngFor="let user of dataSource; let odd = odd" [ngClass]="{ 'bg-gray-100': odd, 'bg-gray-200': !odd }">
+          <td class="table-cell">{{user.username}}</td>
+          <td class="table-cell">{{user.email}}</td>
+          <td class="table-cell">{{user.firstname}}</td>
+          <td class="table-cell">{{user.lastname}}</td>
+          <td class="table-cell">{{user.birthdate}}</td>
+          <td class="table-cell">{{user.phone}}</td>
+          <td class="table-cell">{{user.role}}</td>
+          <td>
+            <div class="button-container">
+              <ng-container *ngIf="user.status === 'I'">
+                <button class="button" mat-fab style="background-color: #F1C93B; color: #ffffff;" aria-label="Activar" (click)="activarEntidad(user.id)">
+                  <mat-icon>check</mat-icon>
+                </button>
+              </ng-container>
+              <ng-container *ngIf="user.status !== 'I'">
+                <button class="button" mat-fab style="background-color: #F1C93B; color: #ffffff; border-radius: 15px; margin: 2px; width: 100px; height: 40px;" aria-label="Editar" (click)="editarEntidad(user)">Modificar</button>
+                <button class="button" mat-fab style="background-color: #FF8080; color: #ffffff; border-radius: 15px; margin: 2px; width: 100px; height: 40px;" aria-label="Eliminar" (click)="deleteUser(user.id)">Eliminar</button>
+              </ng-container>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+      <ng-template #noData>
+        <br>
+        <tr>
+          <td colspan="5" class="text-center py-4 text-gray-500">
+            No hay datos disponibles.
+          </td>
+        </tr>
+      </ng-template>
+      </tbody>
+    </table>
+  </mat-card-content>
+</mat-card>
