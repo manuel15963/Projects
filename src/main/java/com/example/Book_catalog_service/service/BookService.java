@@ -38,10 +38,11 @@ public class BookService {
                     book.setAuthor(bookDetails.getAuthor());
                     book.setIsbn(bookDetails.getIsbn());
                     book.setPublisher(bookDetails.getPublisher());
-                    book.setPublishedDate(bookDetails.getPublishedDate());
+                    book.setPublisheddate(bookDetails.getPublisheddate());
                     book.setPages(bookDetails.getPages());
                     book.setLanguage(bookDetails.getLanguage());
                     book.setDescription(bookDetails.getDescription());
+                    book.setStatus(bookDetails.getStatus());
                     book.setUpdated();
                     return bookRepository.save(book)
                             .doOnSuccess(updatedBook -> kafkaProducerService.sendMessage("book-topic", "Libro actualizado: " + updatedBook.getTitle()));
@@ -50,7 +51,9 @@ public class BookService {
 
     public Mono<Void> deleteBook(Long id) {
         return bookRepository.findById(id)
-                .flatMap(book -> bookRepository.delete(book)
-                        .then(Mono.fromRunnable(() -> kafkaProducerService.sendMessage("book-topic", "Libro eliminado: " + book.getTitle()))));
+                .flatMap(book -> {
+                    book.setStatus("I");
+                    return bookRepository.save(book).then();
+                });
     }
 }

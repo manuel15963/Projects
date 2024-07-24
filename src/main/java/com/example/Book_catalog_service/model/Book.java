@@ -17,10 +17,11 @@ public class Book {
     private String author;
     private String isbn;
     private String publisher;
-    private LocalDate publishedDate;
+    private LocalDate publisheddate;
     private Integer pages;
     private String language;
     private String description;
+    private String status;
     private LocalDateTime created;
     private LocalDateTime updated;
 
