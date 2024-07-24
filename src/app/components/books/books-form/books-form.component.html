@@ -1,0 +1,100 @@
+<div class="cabecera-modalRegistro">
+  <h1>{{ isEditMode ? 'EDITAR USUARIO' : 'NUEVO REGISTRO' }}</h1>
+</div>
+<br>
+<div class="formulario">
+  <form [formGroup]="booksForm">
+    <div class="fila">
+      <label for="campo1">Title:</label>
+      <input formControlName="title" type="text" placeholder="Ingrese título" id="campo1">
+      <div class="validator"
+        *ngIf="booksForm.get('title')?.invalid && (booksForm.get('title')?.dirty || booksForm.get('title')?.touched)">
+        <ng-container *ngIf="booksForm.get('title')?.errors?.['required']">El título es obligatorio.</ng-container>
+        <ng-container *ngIf="booksForm.get('title')?.errors?.['pattern']">El título solo puede contener letras, tildes y espacios.</ng-container>
+      </div>
+    </div>
+
+    <div class="fila">
+      <label for="campo2">Author:</label>
+      <input formControlName="author" type="text" placeholder="Ingrese autor" id="campo2">
+      <div class="validator"
+        *ngIf="booksForm.get('author')?.invalid && (booksForm.get('author')?.dirty || booksForm.get('author')?.touched)">
+        <ng-container *ngIf="booksForm.get('author')?.errors?.['required']">El autor es obligatorio.</ng-container>
+        <ng-container *ngIf="booksForm.get('author')?.errors?.['pattern']">El autor solo puede contener letras, tildes y espacios.</ng-container>
+      </div>
+    </div>
+
+    <div class="fila">
+      <label for="campo3">ISBN:</label>
+      <input formControlName="isbn" type="text" placeholder="Ingrese ISBN" id="campo3">
+      <div class="validator"
+        *ngIf="booksForm.get('isbn')?.invalid && (booksForm.get('isbn')?.dirty || booksForm.get('isbn')?.touched)">
+        <ng-container *ngIf="booksForm.get('isbn')?.errors?.['required']">El ISBN es obligatorio.</ng-container>
+        <ng-container *ngIf="booksForm.get('isbn')?.errors?.['pattern']">El ISBN debe contener solo números y tener 13 caracteres como máximo.</ng-container>
+      </div>
+    </div>
+
+    <div class="fila">
+      <label for="campo4">Publisher:</label>
+      <input formControlName="publisher" type="text" placeholder="Ingrese editorial" id="campo4">
+      <div class="validator"
+        *ngIf="booksForm.get('publisher')?.invalid && (booksForm.get('publisher')?.dirty || booksForm.get('publisher')?.touched)">
+        <ng-container *ngIf="booksForm.get('publisher')?.errors?.['required']">La editorial es obligatoria.</ng-container>
+        <ng-container *ngIf="booksForm.get('publisher')?.errors?.['pattern']">La editorial solo puede contener letras, tildes y espacios.</ng-container>
+      </div>
+    </div>
+
+    <div class="fila">
+      <label for="campo5">Published Date:</label>
+      <input formControlName="publisheddate" type="date" id="campo5">
+      <div class="validator"
+        *ngIf="booksForm.get('publisheddate')?.invalid && (booksForm.get('publisheddate')?.dirty || booksForm.get('publisheddate')?.touched)">
+        <ng-container *ngIf="booksForm.get('publisheddate')?.errors?.['required']">La fecha de publicación es obligatoria.</ng-container>
+      </div>
+    </div>
+
+    <div class="fila">
+      <label for="campo6">Pages:</label>
+      <input formControlName="pages" type="text" placeholder="Ingrese páginas" id="campo6">
+      <div class="validator"
+        *ngIf="booksForm.get('pages')?.invalid && (booksForm.get('pages')?.dirty || booksForm.get('pages')?.touched)">
+        <ng-container *ngIf="booksForm.get('pages')?.errors?.['required']">El número de páginas es obligatorio.</ng-container>
+        <ng-container *ngIf="booksForm.get('pages')?.errors?.['pattern']">El número de páginas debe ser un número positivo y no puede exceder los 4 dígitos.</ng-container>
+      </div>
+    </div>
+
+    <div class="fila">
+      <label for="campo7">Language:</label>
+      <input formControlName="language" type="text" placeholder="Ingrese idioma" id="campo7">
+      <div class="validator"
+        *ngIf="booksForm.get('language')?.invalid && (booksForm.get('language')?.dirty || booksForm.get('language')?.touched)">
+        <ng-container *ngIf="booksForm.get('language')?.errors?.['required']">El idioma es obligatorio.</ng-container>
+        <ng-container *ngIf="booksForm.get('language')?.errors?.['pattern']">El idioma solo puede contener letras, tildes y no debe contener espacios.</ng-container>
+      </div>
+    </div>
+
+    <div class="fila">
+      <label for="campo8">Description:</label>
+      <input formControlName="description" type="text" placeholder="Ingrese descripción" id="campo8">
+      <div class="validator"
+        *ngIf="booksForm.get('description')?.invalid && (booksForm.get('description')?.dirty || booksForm.get('description')?.touched)">
+        <ng-container *ngIf="booksForm.get('description')?.errors?.['required']">La descripción es obligatoria.</ng-container>
+        <ng-container *ngIf="booksForm.get('description')?.errors?.['pattern']">La descripción solo puede contener letras, números, tildes y espacios, con un máximo de 200 caracteres.</ng-container>
+      </div>
+    </div>
+
+    <div class="columna"></div>
+
+    <div class="boton-espacio">
+      <button type="submit" (click)="saveBooks()" [disabled]="booksForm.invalid" mat-raised-button
+              style="background-color: #9ADE7B; color: #ffffff;">
+        {{ isEditMode ? 'ACTUALIZAR' : 'GUARDAR' }}
+      </button>
+      <button (click)="onClose()" mat-raised-button
+              style="background-color: #FF8080; color: #ffffff; margin-left: 12px;">
+        CERRAR
+      </button>
+    </div>
+    <br>
+  </form>
+</div>

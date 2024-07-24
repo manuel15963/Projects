@@ -35,6 +35,11 @@ export class FullComponent {
       icon: "layers",
       menu: "Usuarios",
     },
+    {
+      link: "/books",
+      icon: "layers",
+      menu: "Books",
+    },
   ]
 
 }

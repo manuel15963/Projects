@@ -11,6 +11,8 @@ import { NzCardModule } from "ng-zorro-antd/card";
 import { NzSelectModule } from "ng-zorro-antd/select";
 import { NzTableModule } from "ng-zorro-antd/table";
 import { NzModalModule } from "ng-zorro-antd/modal";
+import { BooksListComponent } from './books/books-list/books-list.component';
+import { BooksFormComponent } from './books/books-form/books-form.component';
 
 @NgModule({
   imports: [
@@ -28,6 +30,8 @@ import { NzModalModule } from "ng-zorro-antd/modal";
     ConfirmDialogComponent,
     UsersListComponent,
     UsersFormComponent,
+    BooksListComponent,
+    BooksFormComponent,
   ]
 })
 export class ComponentsModule { }

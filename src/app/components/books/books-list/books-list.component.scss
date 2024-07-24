@@ -1,0 +1,185 @@
+.cabecera {
+  text-align: center;
+  color: black;
+  font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+.titulo {
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-size: 30px;
+  margin: 0;
+}
+
+#filtroEstadoContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.buton .btn-nueva-entidad {
+  background-color: #9ADE7B;
+  color: #ffffff;
+  border-radius: 15px;
+  margin: 2px;
+}
+
+.filtro-estado {
+  display: flex;
+  align-items: center;
+}
+
+.filtro-estado label {
+  margin-right: 10px;
+}
+
+.filtros-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 8px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filtro-item,
+.filtro-fecha {
+  flex: 1;
+  margin-left: 50px; /* Ajusta el margen izquierdo para mover los filtros hacia la derecha */
+  margin-right: 10px;
+  max-width: 210px; /* Ajusta este valor para reducir el ancho */
+}
+
+.mat-form-field {
+  width: 100%;
+  max-width: 200px; /* Ajusta este valor para reducir el ancho */
+}
+
+.filtro-item:last-child,
+.filtro-fecha:last-child {
+  margin-right: 0px; /* Elimina el margen derecho en el último elemento */
+}
+
+.date-picker-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.btn-limpiar-filtros {
+  background-color: #96305a;
+  color: #ffffff;
+  border-radius: 15px;
+  margin: 2px;
+}
+
+.table-container {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.button-container .btn-activar {
+  background-color: #2d6301;
+  color: #ffffff;
+}
+
+.button-container .btn-modificar {
+  background-color: #F1C93B;
+  color: #ffffff;
+  border-radius: 15px;
+  margin: 2px;
+  width: 100px;
+  height: 40px;
+}
+
+.button-container .btn-eliminar {
+  background-color: #FF8080;
+  color: #ffffff;
+  border-radius: 15px;
+  margin: 2px;
+  width: 100px;
+  height: 40px;
+}
+
+.mat-elevation-z8 {
+}
+
+.mat-paginator {
+  background-color: #f2f2f2;
+  border-radius: 15px;
+  padding: 8px;
+}
+
+.mat-paginator .mat-button {
+  background-color: #9ADE7B;
+  color: #ffffff;
+  border-radius: 15px;
+  margin: 2px;
+}
+
+.mat-paginator .mat-button:hover {
+  background-color: #80C763;
+}
+
+.mat-paginator .mat-form-field {
+  width: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.mat-paginator .mat-select {
+  background-color: #f0f0f0;
+  border-radius: 15px;
+}
+
+.mat-paginator .mat-select:hover {
+  background-color: #e0e0e0;
+}
+
+.mat-paginator .mat-option {
+  background-color: #ffffff;
+  border-radius: 15px;
+}
+
+.mat-paginator .mat-option:hover {
+  background-color: #f2f2f2;
+}
+
+/* Estilo para los mensajes de error */
+.error-message {
+  color: #720202;
+  background-color: #d9534f; /* Color de fondo rojo */
+  padding: 5px;
+  border-radius: 3px;
+  display: block;
+  font-size: 0.875rem;
+}
+
+.validator {
+  color: #720202;
+  background-color: #f8a6a6;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+}
