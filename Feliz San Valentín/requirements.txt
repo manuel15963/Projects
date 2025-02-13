@@ -1,0 +1,10 @@
+Pillow
+SpeechRecognition
+pygame
+librosa
+numpy
+scipy
+audioread
+
+
+# pip install -r requirements.txt  CON ESE COMANDO PODRAS INSTALAR  LAS DEPENDENCIAS USADAS
