@@ -1,0 +1,59 @@
+<mat-card>
+  <mat-card-title>Registrar producto</mat-card-title>
+  <mat-card-content>
+    <form #f="ngForm" (ngSubmit)="submit()">
+      <!-- Nombre -->
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Nombre</mat-label>
+        <input matInput required name="name" [(ngModel)]="product.name" #name="ngModel">
+        <mat-error *ngIf="name.invalid && name.touched">El nombre es obligatorio</mat-error>
+      </mat-form-field>
+
+      <!-- Descripción -->
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Descripción</mat-label>
+        <input matInput name="description" [(ngModel)]="product.description">
+      </mat-form-field>
+
+      <!-- Precio unitario -->
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Precio unitario</mat-label>
+        <input matInput type="number" required name="unitPrice" [(ngModel)]="product.unitPrice" #unitPrice="ngModel">
+        <mat-error *ngIf="unitPrice.invalid && unitPrice.touched">Campo obligatorio</mat-error>
+      </mat-form-field>
+
+      <!-- Stock -->
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Stock</mat-label>
+        <input matInput type="number" required name="stocks" [(ngModel)]="product.stocks" #stocks="ngModel">
+        <mat-error *ngIf="stocks.invalid && stocks.touched">Campo obligatorio</mat-error>
+      </mat-form-field>
+
+      <!-- Fecha vencimiento -->
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Fecha vencimiento</mat-label>
+        <input matInput type="date" required name="expirationDate" [(ngModel)]="product.expirationDate" #expirationDate="ngModel">
+        <mat-error *ngIf="expirationDate.invalid && expirationDate.touched">Campo obligatorio</mat-error>
+      </mat-form-field>
+
+      <!-- Categoría con Autocomplete -->
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Categoría*</mat-label>
+        <input type="text" matInput [formControl]="categoryControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onCategorySelected($event.option.value)">
+          <mat-option *ngFor="let option of filteredCategories$ | async" [value]="option">
+            {{ option }}
+          </mat-option>
+          <mat-option *ngIf="(filteredCategories$ | async)?.length === 0" disabled>
+            No se encontraron coincidencias
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <!-- Botón -->
+      <button mat-raised-button color="primary" [disabled]="f.invalid || !categoryControl.value?.trim()">
+        Registrar
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
