@@ -16,6 +16,11 @@ public class CategoriesServiceImpl implements CategoriesService {
 
     @Override
     public List<Categories> findAll() {
+        return repository.findAll();
+    }
+
+    @Override
+    public List<Categories> findActive() {
         return repository.findByStatus("1");
     }
 
@@ -32,17 +37,8 @@ public class CategoriesServiceImpl implements CategoriesService {
 
     @Override
     public Categories update(Long id, Categories category) {
-        Categories existing = repository.findById(id).orElse(null);
-        if (existing != null) {
-            category.setId(id);
-            // Validar que status solo sea "1" o "0"
-            if (!"1".equals(category.getStatus()) && !"0".equals(category.getStatus())) {
-                category.setStatus(existing.getStatus()); // Si es inválido, mantiene el anterior
-            }
-
-            return repository.save(category);
-        }
-        return null;
+        category.setId(id);
+        return repository.save(category);
     }
 
     @Override
@@ -53,5 +49,4 @@ public class CategoriesServiceImpl implements CategoriesService {
             repository.save(category);
         }
     }
-
 }
