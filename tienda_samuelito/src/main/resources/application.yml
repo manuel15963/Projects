@@ -1,0 +1,17 @@
+server:
+  port: 8085
+
+spring:
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=tienda;encrypt=true;trustServerCertificate=true
+    username: sa
+    password: 123software
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    database-platform: org.hibernate.dialect.SQLServerDialect
+    hibernate:
+      ddl-auto: none  # Puede ser 'create', 'update', 'validate' o 'none' | Hibernate no creará/modificará la estructura
+    show-sql: true  # Para ver las consultas SQL en consola
+  #sql:
+  #  init:
+  #    mode: always  # Ejecuta schema.sql y data.sql en cada inicio

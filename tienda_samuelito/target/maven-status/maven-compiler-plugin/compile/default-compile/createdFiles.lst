@@ -1,0 +1,11 @@
+pe\edu\vallegrande\project\repository\ProductsRepository.class
+pe\edu\vallegrande\project\model\Products.class
+pe\edu\vallegrande\project\model\Categories.class
+pe\edu\vallegrande\project\ProjectApplication.class
+pe\edu\vallegrande\project\service\impl\CategoriesServiceImpl.class
+pe\edu\vallegrande\project\service\CategoriesService.class
+pe\edu\vallegrande\project\service\ProductsService.class
+pe\edu\vallegrande\project\rest\CategoriesController.class
+pe\edu\vallegrande\project\service\impl\ProductsServiceImpl.class
+pe\edu\vallegrande\project\rest\ProductsController.class
+pe\edu\vallegrande\project\repository\CategoriesRepository.class

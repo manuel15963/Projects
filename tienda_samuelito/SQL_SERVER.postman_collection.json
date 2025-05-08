@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "e76da26e-0c9d-4554-bf94-332eeb48337f",
+		"name": "SQL_SERVER",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14821201",
+		"_collection_link": "https://grey-robot-80782.postman.co/workspace/SQL_SERVER~e6df8417-9c04-4ad8-a61c-49aa6f83e059/collection/14821201-e76da26e-0c9d-4554-bf94-332eeb48337f?action=share&source=collection_link&creator=14821201"
+	},
+	"item": [
+		{
+			"name": "FOLDER",
+			"item": [
+				{
+					"name": "CREATE | CREAR",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"dni\": \"54676789\",\r\n  \"firstName\": \"Pepito\",\r\n  \"lastName\": \"Perez\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://scaling-giggle-p9vp9xp7x4g3r59p-8085.app.github.dev/v1/api/customer/save",
+							"protocol": "https",
+							"host": [
+								"scaling-giggle-p9vp9xp7x4g3r59p-8085",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"v1",
+								"api",
+								"customer",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "READ | LISTAR",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://scaling-giggle-p9vp9xp7x4g3r59p-8085.app.github.dev/v1/api/customer",
+							"protocol": "https",
+							"host": [
+								"scaling-giggle-p9vp9xp7x4g3r59p-8085",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"v1",
+								"api",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "READ | LISTAR X ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://scaling-giggle-p9vp9xp7x4g3r59p-8085.app.github.dev/v1/api/customer/2",
+							"protocol": "https",
+							"host": [
+								"scaling-giggle-p9vp9xp7x4g3r59p-8085",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"v1",
+								"api",
+								"customer",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE | EDITAR",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"dni\": \"54676789\",\r\n    \"firstName\": \"Pepito 2\",\r\n    \"lastName\": \"Perez 2\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://scaling-giggle-p9vp9xp7x4g3r59p-8085.app.github.dev/v1/api/customer/update",
+							"protocol": "https",
+							"host": [
+								"scaling-giggle-p9vp9xp7x4g3r59p-8085",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"v1",
+								"api",
+								"customer",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE | ELIMINAR",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://scaling-giggle-p9vp9xp7x4g3r59p-8085.app.github.dev/v1/api/customer/delete",
+							"protocol": "https",
+							"host": [
+								"scaling-giggle-p9vp9xp7x4g3r59p-8085",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"v1",
+								"api",
+								"customer",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
